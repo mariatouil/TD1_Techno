@@ -31,3 +31,9 @@ def player_damage(self):
         print("Calculating player damage...")
         # Votre logique de calcul des dégâts de l'équipe du joueur ici
         print("Player damage calculated.")
+
+def move(self):
+        # Charge le fichier texte et calcule le résultat de l'action de mouvement, puis met à jour le fichier texte
+        print("Moving...")
+        # Votre logique de mouvement ici
+        print("Move executed.")
