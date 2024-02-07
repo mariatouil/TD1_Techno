@@ -24,3 +24,10 @@ def __load_enemy_team(self):
         print("Loading enemy team...")
         # Votre logique de chargement de l'équipe ennemie ici
         print("Enemy team loaded.")
+
+
+def player_damage(self):
+        # Retourne la somme des dégâts des unités de l'équipe du joueur
+        print("Calculating player damage...")
+        # Votre logique de calcul des dégâts de l'équipe du joueur ici
+        print("Player damage calculated.")
