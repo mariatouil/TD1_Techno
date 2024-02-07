@@ -11,3 +11,10 @@ class Game:
         self.__game_status = "Configured"
         print("Game configured.")
 
+       
+    def load_game(self):
+        # Charge l'état de la partie à partir du fichier texte
+        print("Loading game...")
+        # Votre logique de chargement de la partie ici
+        print("Game loaded.")
+        
