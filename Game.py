@@ -11,3 +11,8 @@ class Game:
         self.__game_status = "Configured"
         print("Game configured.")
 
+def enemy_damage(self): #ranya
+        # Retourne la somme des dégâts des unités de l'équipe ennemie
+        print("Calculating enemy damage...")
+        # Votre logique de calcul des dégâts de l'équipe ennemie ici
+        print("Enemy damage calculated.")
