@@ -31,3 +31,9 @@ def player_damage(self):
         print("Calculating player damage...")
         # Votre logique de calcul des dégâts de l'équipe du joueur ici
         print("Player damage calculated.")
+        
+def buy(self, unit):
+        # Achète l'unité choisie et met à jour les données du fichier texte
+        print(f"Buying {unit}...")
+        # Votre logique d'achat d'unité ici
+        print(f"{unit} bought.")
