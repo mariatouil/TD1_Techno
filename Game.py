@@ -11,3 +11,6 @@ class Game:
         self.__game_status = "Configured"
         print("Game configured.")
 
+def status(self):
+        # Affiche l'état courant de la partie
+        print(f"Game status: {self.__game_status}")
