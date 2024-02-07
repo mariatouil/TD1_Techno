@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from TeamIterator import TeamIterator
+
 class Team(ABC):
     def init(self, members):
         self._members = members
