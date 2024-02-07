@@ -31,3 +31,13 @@ def player_damage(self):
         print("Calculating player damage...")
         # Votre logique de calcul des dégâts de l'équipe du joueur ici
         print("Player damage calculated.")
+
+def start_game(self):
+        # Redémarre la partie en écrasant les données du fichier texte
+        print("Starting game...")
+        # Votre logique de redémarrage de la partie ici
+        self.__game_status = "Started"
+        print("Game started.")
+
+
+        
