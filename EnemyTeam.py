@@ -1,33 +1,54 @@
-from Team import Team
+from abc import ABC, abstractmethod
 
+class Team(ABC):
+    def __init__(self, members):
+        self._members = members
+
+    def __len__(self):
+        return len(self._members)
+
+    def __getitem__(self, index):
+        return self._members[index]
+
+    @abstractmethod
+    def __iter__(self):
+        pass
+
+class TeamIterator:
+    def __init__(self, team):
+        self._team = team
+        self._index = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self._index < len(self._team):
+            member = self._team[self._index]
+            self._index += 1
+            return member
+        raise StopIteration
 
 class EnemyTeam(Team):
-    def init(self, members, nb_warriors, nb_hunters, nb_wizards, damage, loot, flee):
-        super().init(members)
-        self.nb_warriors = nb_warriors
-        self.nb_hunters = nb_hunters
-        self.nb_wizards = nb_wizards
-        self.damage = damage
-        self.loot = loot
-        self.flee = flee
+    def __init__(self, members, unit, damage, loot):
+        super().__init__(members)
+        self.__unit = unit
+        self.__damage = damage
+        self.__loot = loot
 
-    def damage(self):
-        return self.damage
+    def get_total_damage(self):
+        return self.__damage * len(self)
 
-    def loot(self):
-        return self.loot
+    def get_total_loot(self):
+        return self.__loot * len(self)
 
-    def flee(self):
-        return self.flee
+    def get_unit_type(self):
+        return self.__unit
 
-    def nb_warriors(self):
-        return self.nb_warriors
-
-    def nb_hunters(self):
-        return self.nb_hunters
-
-    def nb_wizards(self):
-        return self.nb_wizards
-
-    def repr(self):
-        return f"EnemyTeam(warriors={self.nb_warriors}, hunters={self.nb_hunters}, wizards={self.nb_wizards}, damage={self.damage}, loot={self.loot}, flee={self.flee})"
+# Exemple d'utilisation
+if __name__ == "__main__":
+    enemy_team = EnemyTeam(["Enemy1", "Enemy2", "Enemy3"], "zombie", 2, 1)
+    print(len(enemy_team))  # Output: 3
+    print(enemy_team.get_total_damage())  # Output: 6
+    print(enemy_team.get_total_loot())    # Output: 3
+    print(enemy_team.get_unit_type())     # Output: zombie

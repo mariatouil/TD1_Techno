@@ -11,6 +11,13 @@ class Game:
         self.__game_status = "Configured"
         print("Game configured.")
 
+
+def enemy_damage(self): #ranya
+        # Retourne la somme des dégâts des unités de l'équipe ennemie
+        print("Calculating enemy damage...")
+        # Votre logique de calcul des dégâts de l'équipe ennemie ici
+        print("Enemy damage calculated.")
+
 def status(self):
         # Affiche l'état courant de la partie
         print(f"Game status: {self.__game_status}")
@@ -19,6 +26,9 @@ def __load_player_team(self):
         print("Loading player team...")
         # Votre logique de chargement de l'équipe du joueur ici
         print("Player team loaded.")
+
+
+
 def __load_enemy_team(self):
         # Retourne une instance de EnemyTeam à partir du fichier texte
         print("Loading enemy team...")
@@ -31,3 +41,4 @@ def player_damage(self):
         print("Calculating player damage...")
         # Votre logique de calcul des dégâts de l'équipe du joueur ici
         print("Player damage calculated.")
+
