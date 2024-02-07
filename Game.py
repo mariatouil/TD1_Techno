@@ -19,3 +19,8 @@ def __load_player_team(self):
         print("Loading player team...")
         # Votre logique de chargement de l'équipe du joueur ici
         print("Player team loaded.")
+def __load_enemy_team(self):
+        # Retourne une instance de EnemyTeam à partir du fichier texte
+        print("Loading enemy team...")
+        # Votre logique de chargement de l'équipe ennemie ici
+        print("Enemy team loaded.")
