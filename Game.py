@@ -1,43 +1,90 @@
-class Game:
-    history_file = "game_history.txt"
+import json
 
+class Game:
     def __init__(self):
-        self.__game_status = "Not started"
+        self.__player_name = None
+        self.__action_context = "movement"  # Initial context is movement
+        self.__player_loot = 40  # Initial loot is 40
+        self.__player_team = {"warriors": 0, "hunters": 0, "wizards": 0}  # Initial team is empty
 
     def config(self):
-        # Configure la partie et sauvegarde dans le fichier texte
-        print("Configuring the game...")
-        # Votre logique de configuration ici
-        self.__game_status = "Configured"
-        print("Game configured.")
+        self.__player_name = input("Enter player name: ")
+        print(f"Welcome, {self.__player_name}! Game configured.")
 
-def status(self):
-        # Affiche l'état courant de la partie
-        print(f"Game status: {self.__game_status}")
-def __load_player_team(self):
-        # Retourne une instance de PlayerTeam à partir du fichier texte
-        print("Loading player team...")
-        # Votre logique de chargement de l'équipe du joueur ici
-        print("Player team loaded.")
-def __load_enemy_team(self):
-        # Retourne une instance de EnemyTeam à partir du fichier texte
-        print("Loading enemy team...")
-        # Votre logique de chargement de l'équipe ennemie ici
-        print("Enemy team loaded.")
+    def start(self):
+        self.__action_context = "movement"
+        self.__player_loot = 40
+        self.__player_team = {"warriors": 0, "hunters": 0, "wizards": 0}
+        print("New game started.")
 
+    def status(self):
+        if self.__player_name:
+            print(f"Player: {self.__player_name}")
+        print(f"Loot: {self.__player_loot}")
+        print("Player Team:")
+        print(f"Warriors: {self.__player_team['warriors']}")
+        print(f"Hunters: {self.__player_team['hunters']}")
+        print(f"Wizards: {self.__player_team['wizards']}")
+        if self.__action_context == "movement":
+            print("Possible actions: buy UNIT, move DIRECTION")
+        elif self.__action_context == "combat":
+            print("Possible actions: fight, flee")
+        else:
+            print("Unknown action context.")
 
-def player_damage(self):
-        # Retourne la somme des dégâts des unités de l'équipe du joueur
-        print("Calculating player damage...")
-        # Votre logique de calcul des dégâts de l'équipe du joueur ici
-        print("Player damage calculated.")
+    def buy(self, unit):
+        if self.__action_context != "combat":
+            if self.__player_loot >= 10:
+                self.__player_loot -= 10
+                self.__player_team[unit] += 1
+                print(f"{unit.capitalize()} bought.")
+            else:
+                print("Not enough loot to buy unit.")
+        else:
+            print("Cannot buy unit during combat.")
 
-def start_game(self):
-        # Redémarre la partie en écrasant les données du fichier texte
-        print("Starting game...")
-        # Votre logique de redémarrage de la partie ici
-        self.__game_status = "Started"
-        print("Game started.")
+    def move(self, direction):
+        if self.__action_context != "combat":
+            # Simulate movement and update game state
+            # For now, let's assume the player finds loot every time they move
+            loot_found = 10
+            self.__player_loot += loot_found
+            print(f"Moved {direction}. Loot found: {loot_found}")
+        else:
+            print("Cannot move during combat.")
 
+    def fight(self):
+        if self.__action_context == "combat":
+            # Simulate combat and update game state
+            # For now, let's assume the player wins every fight
+            print("You won the fight!")
+        else:
+            print("Cannot fight outside of combat.")
 
-        
+    def flee(self):
+        if self.__action_context == "combat":
+            # Simulate flee and update game state
+            # For now, let's assume each unit has a 50% chance of dying during flee
+            for unit, count in self.__player_team.items():
+                self.__player_team[unit] -= min(count, int(count * 0.5))
+            print("Flee successful.")
+        else:
+            print("Cannot flee outside of combat.")
+
+    def save_state(self, filename):
+        state = {
+            "player_name": self.__player_name,
+            "action_context": self.__action_context,
+            "player_loot": self.__player_loot,
+            "player_team": self.__player_team
+        }
+        with open(filename, "w") as file:
+            json.dump(state, file)
+
+    def load_state(self, filename):
+        with open(filename, "r") as file:
+            state = json.load(file)
+            self.__player_name = state["player_name"]
+            self.__action_context = state["action_context"]
+            self.__player_loot = state["player_loot"]
+            self.__player_team = state["player_team"]
