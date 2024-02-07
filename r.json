@@ -1,0 +1,11 @@
+{
+    "player_name": "Alice",
+    "action_context": "movement",
+    "player_loot": 30,
+    "player_team": {
+      "warriors": 1,
+      "hunters": 2,
+      "wizards": 0
+    }
+  }
+  
