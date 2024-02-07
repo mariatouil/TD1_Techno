@@ -9,3 +9,6 @@ class Team(ABC):
 
     def getitem(self, index):
         return self._members[index]
+    
+    def iter(self):
+        return TeamIterator(self._members)
