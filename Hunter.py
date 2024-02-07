@@ -11,7 +11,7 @@ class Hunter:
     def __str__(self):
         return f"Dégât: {self.degat}, Chance: {self.chance}, Fuite: {self.fuite}, Prix: {self.prix}, Type d'unité: {self.type_unite}"
 
-# Exemple d'utilisation
+
 if __name__ == "__main__":
     hunter = Hunter()
     print(hunter)
